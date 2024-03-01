@@ -16,6 +16,7 @@ smileyBtn.addEventListener(`click`, function() /*creiamo una griglia con una sem
         }
     }
     activateTiles();
+    generateBombs();
 })
 
 
@@ -29,5 +30,32 @@ function activateTiles(){
             console.log(this._tileId)
         })
     }
+
+
+    function generateBombs() {
+        const grid = document.querySelectorAll(`.tile`);
+        const gridSize = grid.length;
+        const bombNum = 16;
+        let bombsArray = [];
+
+        while(bombsArray.length <= bombNum) {
+            numRandom = getRandomInt(1,gridSize);
+            
+            for (let y = 0; y < bombNum; y++){
+               if (numRandom != bombNum[y]) {
+                    bombsArray.push(numRandom);
+                    console.log(`La casella ${numRandom} è una bomba`);
+                }
+            }
+        }
+    }
 }
 
+
+
+function getRandomInt(min, max) 
+{
+    const minCeil = Math.ceil(min);
+    const maxFloor = Math.floor(max);
+    return Math.floor(Math.random() * (maxFloor - minCeil + 1) + minCeil);
+}
