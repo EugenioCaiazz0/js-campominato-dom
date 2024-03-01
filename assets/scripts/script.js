@@ -23,33 +23,37 @@ smileyBtn.addEventListener(`click`, function() /*creiamo una griglia con una sem
 function activateTiles(){
     console.log(this)
     const allTiles = document.querySelectorAll('.tile');
-    for(let i = 0; i < allTiles.length; i++){
+    for(let i = 0; i < allTiles.length; i++)
+    {
         allTiles[i]._tileId = i + 1;
-        allTiles[i].addEventListener('click', function(){
+        allTiles[i].addEventListener('click', function()
+        {
             console.log(this);
             console.log(this._tileId)
         })
     }
-
+}
 
     function generateBombs() {
         const grid = document.querySelectorAll(`.tile`);
         const gridSize = grid.length;
         const bombNum = 16;
-        let bombsArray = [];
+        const bombsArray = [bombNum].fill(0);
 
-        while(bombsArray.length <= bombNum) {
+        while(bombsArray.length <= bombNum) 
+        {
             numRandom = getRandomInt(1,gridSize);
             
-            for (let y = 0; y < bombNum; y++){
-               if (numRandom != bombNum[y]) {
+            for (let y = 0; y < bombNum; y++)
+            {
+               if (numRandom != bombsArray[y]) 
+               {
                     bombsArray.push(numRandom);
                     console.log(`La casella ${numRandom} è una bomba`);
                 }
             }
         }
     }
-}
 
 
 
